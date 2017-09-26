@@ -1,22 +1,16 @@
 version: '3'
 
 services:
-  frontend:
-    container_name: planarsys-frontend
+  angular-course:
+    container_name: angular-course-frontend
     build: docker/frontend
     ports:
       - 4200:4200
     volumes:
-      - ./:/var/www/planarsys
+      - ./:/var/www/angular-course
     tty: true
     networks:
-      - network
-
-  selenium-standalone:
-    container_name: selenium-chrome-hub
-    build: docker/selenium
-    networks:
-      - network
+      - angular-course-network
 
 networks:
-  network:
+ angular-course-network:
