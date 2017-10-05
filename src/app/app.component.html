@@ -17,10 +17,23 @@
 
 
 <app-header>
-  <img [src]="logo" [alt]="desc" [style.width.px]="width" (click)="clickOnImage()">
+  <img [src]="logo | safeUrl" [alt]="desc" [style.width.px]="width" (click)="clickOnImage()">
   {{title}}
   <div class="right-side">
     <app-search [placeholder]="placeholder" (mySearch)="text=$event"></app-search>
   </div>
 </app-header>
-{{text}}
+
+<div *ngIf="products$ | async  as products; else loadGif">
+  <div *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd">
+    <app-card [product]="product" [position]="i+1" [isOdd]="isOdd"></app-card>
+  </div>
+</div>
+
+<ng-template #loadGif>
+
+  <div class="loadBlock">
+    <img src="assets/images/gears.gif" alt="">
+  </div>
+
+</ng-template>
