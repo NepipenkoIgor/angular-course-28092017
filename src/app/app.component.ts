@@ -3,12 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { products$ } from './data';
 import { Observable } from 'rxjs/Observable';
 
-// import { Observable } from 'rxjs/Observable';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   public title: string = 'Angular course';
@@ -21,7 +19,6 @@ export class AppComponent implements OnInit {
   public placeholder: string = 'search term';
 
   public products$: Observable<Product[]> = products$;
-
 
   public ngOnInit(): void {
     // this.subscription = products$.subscribe((products: Product[]) => {

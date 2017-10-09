@@ -25,9 +25,8 @@
 </app-header>
 
 <div *ngIf="products$ | async  as products; else loadGif">
-  <div *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd">
-    <app-card [product]="product" [position]="i+1" [isOdd]="isOdd"></app-card>
-  </div>
+  <app-card  *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd" [product]="product" [position]="i+1" [isOdd]="isOdd">
+  </app-card>
 </div>
 
 <ng-template #loadGif>

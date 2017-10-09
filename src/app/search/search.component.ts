@@ -16,4 +16,5 @@ export class SearchComponent {
   public search(text: string): void {
     this.mySearch.emit(text);
   }
+
 }

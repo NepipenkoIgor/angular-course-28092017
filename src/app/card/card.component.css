@@ -1,7 +1,10 @@
-:host {
+mat-card {
   display: block;
   border-bottom: 1px solid grey;
   margin-top: 5px;
+  width: 100%;
+  height: 50px;
+  padding: 5px 0;
 }
 
 .card {
@@ -13,12 +16,15 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  float: left;
+  margin-right: 15px;
 }
 
 .name, .position, .price {
   line-height: 45px;
-  margin: 0 20px
+  margin: 0 20px;
+  float: left;
 }
 
 .background {
@@ -27,7 +33,7 @@
 
 .tooltip-container .tooltip {
   position: absolute;
-  top: 0;
+  top: -15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   line-height: 20px;
