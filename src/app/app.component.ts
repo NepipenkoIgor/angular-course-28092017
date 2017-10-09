@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { products$ } from './data';
+// import { products$ } from './data';
 import { Observable } from 'rxjs/Observable';
+import { ProductsService } from './common/services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,17 @@ export class AppComponent implements OnInit {
   public desc: string = 'its logo';
   public placeholder: string = 'search term';
 
-  public products$: Observable<Product[]> = products$;
+  public products$: Observable<Product[]>;
+
+  public constructor(
+    private _productsService: ProductsService
+  ) {
+
+  }
 
   public ngOnInit(): void {
+    this.products$ = this._productsService.getProducts();
+
     // this.subscription = products$.subscribe((products: Product[]) => {
     //   this.products$ = products;
     // });
@@ -31,4 +40,3 @@ export class AppComponent implements OnInit {
 
   }
 }
-
