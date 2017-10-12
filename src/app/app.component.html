@@ -21,11 +21,14 @@
   {{title}}
   <div class="right-side">
     <app-search [placeholder]="placeholder" (mySearch)="text=$event"></app-search>
+    <app-cart></app-cart>
   </div>
 </app-header>
 
 <div *ngIf="products$ | async  as products; else loadGif">
-  <app-card  *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd" [product]="product" [position]="i+1" [isOdd]="isOdd">
+  <app-card  *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd"
+    [product]="product" [position]="i+1" [isOdd]="isOdd"
+     (click)="openFullCard(product)">
   </app-card>
 </div>
 
@@ -36,3 +39,5 @@
   </div>
 
 </ng-template>
+
+<app-modal></app-modal>

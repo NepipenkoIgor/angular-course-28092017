@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 // import { products$ } from './data';
 import { Observable } from 'rxjs/Observable';
 import { ProductsService } from './common/services/products.service';
+import { ModalService } from './common/services/modal.service';
+import { FullCardComponent } from './card/full-card/full-card.component';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +24,8 @@ export class AppComponent implements OnInit {
   public products$: Observable<Product[]>;
 
   public constructor(
-    private _productsService: ProductsService
+    private _productsService: ProductsService,
+    private _modalService: ModalService,
   ) {
 
   }
@@ -38,5 +41,14 @@ export class AppComponent implements OnInit {
 
   public clickOnImage(): void {
 
+  }
+
+  public openFullCard(product: Product): void {
+    this._modalService.open({
+      component: FullCardComponent,
+      context: {
+        product
+      }
+    });
   }
 }

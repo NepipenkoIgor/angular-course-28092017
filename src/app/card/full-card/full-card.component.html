@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{product.title}}</mat-card-title>
+    <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="product.picture">
+  <mat-card-content></mat-card-content>
+  <mat-card-actions>
+    <button mat-button class="buy_button" (click)="buy({product:product,action:'add'})">BUY</button>
+  </mat-card-actions>
+</mat-card>
