@@ -1,3 +1,16 @@
-<p>
-  full-cart works!
-</p>
+<div>
+  <mat-card class="card" [ngClass]="{background:isOdd}"
+    *ngFor="let product of products; index as position">
+    <mat-card-header>
+      <div class="position">{{position+1}}</div>
+      <img class="avatar" [src]="product?.picture"/>
+      <div class="name">{{product.title}}</div>
+      <div class="remove" (click)="remove({product:product, action:'remove'})">
+        x
+      </div>
+    </mat-card-header>
+  </mat-card>
+  <div class="total-sum">
+    {{getTotalSum(products)}}
+  </div>
+</div>

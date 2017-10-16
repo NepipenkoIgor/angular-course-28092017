@@ -19,25 +19,14 @@
 <app-header>
   <img [src]="logo | safeUrl" [alt]="desc" [style.width.px]="width" (click)="clickOnImage()">
   {{title}}
+  <span class="menuItem" [routerLink]="['products']" routerLinkActive="active">Products</span>
+  <span class="menuItem" [routerLink]="['info']" routerLinkActive="active">Info</span>
   <div class="right-side">
     <app-search [placeholder]="placeholder" (mySearch)="text=$event"></app-search>
     <app-cart></app-cart>
   </div>
 </app-header>
 
-<div *ngIf="products$ | async  as products; else loadGif">
-  <app-card  *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd"
-    [product]="product" [position]="i+1" [isOdd]="isOdd"
-     (click)="openFullCard(product)">
-  </app-card>
-</div>
-
-<ng-template #loadGif>
-
-  <div class="loadBlock">
-    <img src="assets/images/gears.gif" alt="">
-  </div>
-
-</ng-template>
+<router-outlet></router-outlet>
 
 <app-modal></app-modal>

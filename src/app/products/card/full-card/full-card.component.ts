@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CartService } from '../../common/services/cart.service';
-import { ModalService } from '../../common/services/modal.service';
+import { CartService } from '../../../common/services/cart.service';
+import { ModalService } from '../../../common/services/modal.service';
 
 @Component({
   selector: 'app-full-card',

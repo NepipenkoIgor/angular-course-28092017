@@ -6,20 +6,23 @@ import { MaterialModule } from './material/material.module';
 import { ProductsService } from './common/services/products.service';
 
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { BASE_URL, BASE_URL_TOKEN } from './config';
+import { BASE_URL, BASE_URL_TOKEN, routes } from './config';
 import { HttpService } from './common/services/http.service';
 import { AppInterceptorService } from './common/services/app-interceptor.service';
 import { declarations } from './hub/declarations';
 import { ModalService } from './common/services/modal.service';
-import { FullCardComponent } from './card/full-card/full-card.component';
+import { FullCardComponent } from './products/card/full-card/full-card.component';
 import { CartService } from './common/services/cart.service';
 import { FullCartComponent } from './cart/full-cart/full-cart.component';
+import { RouterModule } from '@angular/router';
+import { ProductResolveService } from './products/product/product-resolve.service';
 @NgModule({
   declarations,
   imports: [
     BrowserModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     {
@@ -46,11 +49,10 @@ import { FullCartComponent } from './cart/full-cart/full-cart.component';
       multi: true
     },
     ModalService,
-    CartService
+    CartService,
+    ProductResolveService
   ],
-  entryComponents: [FullCardComponent],
-  bootstrap: [AppComponent],
-  declarations: [FullCartComponent]
-
+  entryComponents: [FullCardComponent, FullCartComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

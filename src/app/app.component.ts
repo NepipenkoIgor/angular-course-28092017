@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ProductsService } from './common/services/products.service';
 import { ModalService } from './common/services/modal.service';
-import { FullCardComponent } from './card/full-card/full-card.component';
+import { FullCardComponent } from './products/card/full-card/full-card.component';
 
 @Component({
   selector: 'app-root',

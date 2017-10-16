@@ -14,3 +14,13 @@ h1 {
   display: block;
   margin: 45% auto;
 }
+
+.menuItem {
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 12px;
+}
+
+.active {
+  color: orange;
+}
