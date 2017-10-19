@@ -1,0 +1,42 @@
+<h3>Template driven </h3>
+<!--<mat-input-container>-->
+  <!--<input type="text" matInput ngModel #c="ngModel" required minlength="4">-->
+<!--</mat-input-container>-->
+<!--{{ c.valueChanges | async }}-->
+<!--{{ c.valid  }}-->
+<!--{{ c.value }}-->
+
+<!--<div ngForm #f="ngForm">-->
+
+<!--</div>-->
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <mat-input-container>
+    <input type="text" matInput ngModel name="firstname" required minlength="4">
+  </mat-input-container>
+  <button type="submit">Submit</button>
+</form>
+{{f.value | json}}
+{{f.valid}}
+
+
+<hr>
+<h3>Reactive </h3>
+<!--<mat-input-container>-->
+  <!--<input type="text" matInput [formControl]="name">-->
+<!--</mat-input-container>-->
+<!--{{ name.valueChanges | async }}-->
+<!--{{ name.valid  }}-->
+
+<form  [formGroup]="formModel" (ngSubmit)="onSubmit(formModel.value)">
+  <mat-input-container>
+    <input type="text" matInput ngModel formControlName="firstname">
+  </mat-input-container>
+  <button type="submit">Submit</button>
+</form>
+{{formModel.value | json}}
+{{formModel.valid}}
+
+
+<hr>
+<form ngNoForm></form>

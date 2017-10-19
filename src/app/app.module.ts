@@ -14,15 +14,20 @@ import { ModalService } from './common/services/modal.service';
 import { FullCardComponent } from './products/card/full-card/full-card.component';
 import { CartService } from './common/services/cart.service';
 import { FullCartComponent } from './cart/full-cart/full-cart.component';
-import { RouterModule } from '@angular/router';
+import {
+  // PreloadAllModules,
+  RouterModule } from '@angular/router';
 import { ProductResolveService } from './products/product/product-resolve.service';
+import { OrderGuardService } from './order/order-guard.service';
+import { CustomPreloadingService } from './common/services/custom-preloading.service';
+
 @NgModule({
   declarations,
   imports: [
     BrowserModule,
     MaterialModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadingService })
   ],
   providers: [
     {
@@ -50,7 +55,9 @@ import { ProductResolveService } from './products/product/product-resolve.servic
     },
     ModalService,
     CartService,
-    ProductResolveService
+    ProductResolveService,
+    OrderGuardService,
+    CustomPreloadingService
   ],
   entryComponents: [FullCardComponent, FullCartComponent],
   bootstrap: [AppComponent]

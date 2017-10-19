@@ -10,8 +10,8 @@ import { FullCardComponent } from '../products/card/full-card/full-card.componen
 import { CartComponent } from '../cart/cart.component';
 import { FullCartComponent } from '../cart/full-cart/full-cart.component';
 import { ProductsComponent } from '../products/products.component';
-import { InfoComponent } from '../info/info.component';
 import { ProductComponent } from '../products/product/product.component';
+
 // tslint:disable-next-line
 export const declarations: any[] = [
   AppComponent,
@@ -26,6 +26,5 @@ export const declarations: any[] = [
   CartComponent,
   FullCartComponent,
   ProductsComponent,
-  InfoComponent,
   ProductComponent
 ];

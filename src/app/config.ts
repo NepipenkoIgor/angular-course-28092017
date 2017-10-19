@@ -2,9 +2,9 @@ import { environment } from '../environments/environment';
 import { InjectionToken } from '@angular/core';
 import { Route } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
-import { InfoComponent } from './info/info.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductResolveService } from './products/product/product-resolve.service';
+// import { OrderGuardService } from './order/order-guard.service';
 
 export const BASE_URL: string = environment.baseUrl;
 export const BASE_URL_TOKEN: InjectionToken<string> = new InjectionToken(BASE_URL);
@@ -38,8 +38,13 @@ export const routes: Route[] = [
     ]
   },
   {
+    path: 'order',
+    loadChildren: 'app/order/order.module#OrderModule'
+    // canActivate: [OrderGuardService]
+  },
+  {
     path: 'info',
-    component: InfoComponent
+    loadChildren: 'app/info/info.module#InfoModule'
   }, {
     path: '**',
     redirectTo: 'products'

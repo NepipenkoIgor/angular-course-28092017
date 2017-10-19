@@ -14,8 +14,8 @@ export class HttpService extends HttpClient {
   }
 
 
-  public customRequest(path: string): Observable<Product | Product[]> {
-    return this.get<Product[]>(`${this._baseUrl}${path}`);
+  public customRequest<T>(path: string): Observable<T> {
+    return this.get<T>(`${this._baseUrl}${path}`);
   }
 
 }

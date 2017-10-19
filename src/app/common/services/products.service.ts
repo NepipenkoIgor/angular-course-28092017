@@ -20,7 +20,7 @@ export class ProductsService {
 
   public getProducts(): Observable<Product[]> {
     return (this._http as HttpService)
-      .customRequest('/products');
+      .customRequest<Product[]>('/products');
 
   }
 

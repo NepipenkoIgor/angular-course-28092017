@@ -10,6 +10,8 @@
       </div>
     </mat-card-header>
   </mat-card>
+  <button mat-button class="buy_button" [routerLink]="['order']">Make order</button>
+
   <div class="total-sum">
     {{getTotalSum(products)}}
   </div>
