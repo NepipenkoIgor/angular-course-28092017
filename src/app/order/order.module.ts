@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
 import { SearchService } from './search.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NameValidatorDirective } from '../common/directives/name-validator.directive';
+import { AsyncEqualDirective } from '../common/directives/async-equal.directive';
+import { SwitcherComponent } from './switcher/switcher.component';
 
 @NgModule({
   imports: [
@@ -25,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [SearchService],
   declarations: [
-    OrderComponent
+    OrderComponent,
+    NameValidatorDirective, AsyncEqualDirective, SwitcherComponent
   ]
 })
 export class OrderModule {}

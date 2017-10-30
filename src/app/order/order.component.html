@@ -1,6 +1,6 @@
 <h3>Template driven </h3>
 <!--<mat-input-container>-->
-  <!--<input type="text" matInput ngModel #c="ngModel" required minlength="4">-->
+<!--<input type="text" matInput ngModel #c="ngModel" required minlength="4">-->
 <!--</mat-input-container>-->
 <!--{{ c.valueChanges | async }}-->
 <!--{{ c.valid  }}-->
@@ -10,33 +10,94 @@
 
 <!--</div>-->
 
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">-->
+<!--<mat-input-container>-->
+<!--<input type="text" matInput ngModel name="firstname" required minlength="4">-->
+<!--</mat-input-container>-->
+<!--<button type="submit">Submit</button>-->
+<!--</form>-->
+<!--{{f.value | json}}-->
+<!--{{f.valid}}-->
+
+
 <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div>Username</div>
   <mat-input-container>
-    <input type="text" matInput ngModel name="firstname" required minlength="4">
+    <input type="text" matInput  appNameValidator ngModel name="firstname" required minlength="4">
   </mat-input-container>
+
+  <div ngModelGroup="passwordGroup" appAsyncEqual>
+    <div>Password</div>
+    <mat-input-container>
+      <input type="password" matInput ngModel name="password" required minlength="4">
+    </mat-input-container>
+
+    <div>Confirm password</div>
+    <mat-input-container>
+      <input type="password" matInput ngModel name="pconfirm" required minlength="4">
+    </mat-input-container>
+  </div>
+
   <button type="submit">Submit</button>
+
 </form>
 {{f.value | json}}
 {{f.valid}}
 
-
 <hr>
 <h3>Reactive </h3>
 <!--<mat-input-container>-->
-  <!--<input type="text" matInput [formControl]="name">-->
+<!--<input type="text" matInput [formControl]="name">-->
 <!--</mat-input-container>-->
 <!--{{ name.valueChanges | async }}-->
 <!--{{ name.valid  }}-->
 
-<form  [formGroup]="formModel" (ngSubmit)="onSubmit(formModel.value)">
+<!--<form  [formGroup]="formModel" (ngSubmit)="onSubmit(formModel.value)">-->
+<!--<mat-input-container>-->
+<!--<input type="text" matInput ngModel formControlName="firstname">-->
+<!--</mat-input-container>-->
+<!--<button type="submit">Submit</button>-->
+<!--</form>-->
+<!--{{formModel.value | json}}-->
+<!--{{formModel.valid}}-->
+
+
+<form [formGroup]="formModel" (ngSubmit)="onSubmit(formModel.value)">
+  <div>Username</div>
   <mat-input-container>
-    <input type="text" matInput ngModel formControlName="firstname">
+    <input type="text" matInput appNameValidator formControlName="firstname">
   </mat-input-container>
+
+  <div formGroupName="passwordGroup">
+    <div>Password</div>
+    <mat-input-container>
+      <input type="password" matInput formControlName="password">
+    </mat-input-container>
+
+    <div>Confirm password</div>
+    <mat-input-container>
+      <input type="password" matInput formControlName="pconfirm">
+    </mat-input-container>
+  </div>
+  <app-switcher formControlName="male"></app-switcher>
+  <br>
   <button type="submit">Submit</button>
+
 </form>
 {{formModel.value | json}}
 {{formModel.valid}}
 
 
 <hr>
-<form ngNoForm></form>
+<!--<form ngNoForm></form>-->
+
+<form [formGroup]="formArrayModel">
+  <ul formGroupName="emails">
+    <li *ngFor="let e of formArrayModel.get('emails').controls; let i=index">
+      <input type="text" formControlName="{{i}}">
+    </li>
+  </ul>
+  <button (click)="addEmail()"> Add email</button>
+</form>
+{{formArrayModel.value | json}}
+{{formArrayModel.valid}}
