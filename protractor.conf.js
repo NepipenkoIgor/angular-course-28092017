@@ -8,10 +8,27 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  capabilities: {
+  seleniumAddress: "http://selenium_hub:4444/wd/hub",
+  capabilities:{
     'browserName': 'chrome'
   },
-  directConnect: true,
+  // capabilities:{
+  //   'browserName': 'chrome',
+  //   shardTestFiles: true,
+  //   maxInstances: 2,
+  // },
+  // multiCapabilities: [
+  //   {
+  //     'browserName': 'chrome',
+  //     shardTestFiles: true,
+  //     maxInstances: 2,
+  //   }, {
+  //     'browserName': 'firefox',
+  //     shardTestFiles: true,
+  //     maxInstances: 2,
+  //   }
+  // ],
+  //directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
@@ -20,9 +37,11 @@ exports.config = {
     print: function() {}
   },
   onPrepare() {
-    require('ts-node').register({
-      project: 'e2e/tsconfig.e2e.json'
-    });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    require('ts-node')
+      .register({
+        project: 'e2e/tsconfig.e2e.json'
+      });
+    jasmine.getEnv()
+      .addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };

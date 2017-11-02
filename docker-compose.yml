@@ -12,5 +12,41 @@ services:
     networks:
       - angular-course-network
 
+  selenium_hub:
+    image: selenium/hub
+    container_name: selenium_hub
+    ports:
+      - 4444:4444
+    environment:
+      - GRID_TIMEOUT=120000
+      - GRID_BROWSER_TIMEOUT=120000
+    networks:
+      - angular-course-network
+
+  nodechrome:
+    image: selenium/node-chrome
+    privileged: true
+    environment:
+      - no_proxy=localhost
+      - HUB_PORT_4444_TCP_ADDR=selenium_hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    ports:
+      - 5900
+    networks:
+      - angular-course-network
+
+  nodefirefox:
+    image: selenium/node-firefox
+    privileged: true
+    environment:
+      - no_proxy=localhost
+      - HUB_PORT_4444_TCP_ADDR=selenium_hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    ports:
+      - 5900
+    networks:
+      - angular-course-network
+
 networks:
  angular-course-network:
+  external: true

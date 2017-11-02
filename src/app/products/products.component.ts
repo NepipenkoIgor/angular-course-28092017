@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ProductsService } from '../common/services/products.service';
 import { ModalService } from '../common/services/modal.service';
 import { FullCardComponent } from './card/full-card/full-card.component';
+import { SearchService } from '../search/search.service';
 
 @Component({
   selector: 'app-products',
@@ -16,11 +17,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   public constructor(
     private _productsService: ProductsService,
-    private _modalService: ModalService
+    private _modalService: ModalService,
+    private _searchService: SearchService
   ) { }
 
   public ngOnInit(): void {
     this.products$ = this._productsService.getProducts();
+    this._searchService.searchTerm.subscribe((text: string) => {
+      this.text = text;
+    });
   }
 
   public ngOnDestroy(): void {

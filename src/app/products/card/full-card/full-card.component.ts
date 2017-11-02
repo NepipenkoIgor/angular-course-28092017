@@ -9,6 +9,8 @@ import { ModalService } from '../../../common/services/modal.service';
 })
 export class FullCardComponent {
 
+  public product: Product;
+
   public constructor(
     private _cartService: CartService,
     private _modalService: ModalService,

@@ -92,7 +92,7 @@
 <!--<form ngNoForm></form>-->
 
 <form [formGroup]="formArrayModel">
-  <ul formGroupName="emails">
+  <ul formGroupName="emails" >
     <li *ngFor="let e of formArrayModel.get('emails').controls; let i=index">
       <input type="text" formControlName="{{i}}">
     </li>

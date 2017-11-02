@@ -8,6 +8,8 @@ import { CartService } from '../../common/services/cart.service';
 })
 export class FullCartComponent {
 
+  public products: Product[];
+
   public constructor(
     private _cartService: CartService
   ) {

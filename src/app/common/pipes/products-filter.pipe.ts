@@ -11,7 +11,7 @@ export class ProductsFilterPipe implements PipeTransform {
     }
     return products.filter((product: Product) =>
       `${product.title}${product.price}`.toLocaleLowerCase()
-        .includes(searchTerm));
+        .includes(searchTerm.toLocaleLowerCase()));
   }
 
 }

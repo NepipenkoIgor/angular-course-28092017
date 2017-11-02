@@ -16,10 +16,13 @@ import { CartService } from './common/services/cart.service';
 import { FullCartComponent } from './cart/full-cart/full-cart.component';
 import {
   // PreloadAllModules,
-  RouterModule } from '@angular/router';
+  RouterModule
+} from '@angular/router';
 import { ProductResolveService } from './products/product/product-resolve.service';
 import { OrderGuardService } from './order/order-guard.service';
 import { CustomPreloadingService } from './common/services/custom-preloading.service';
+
+import { SearchService } from './search/search.service';
 
 @NgModule({
   declarations,
@@ -57,7 +60,8 @@ import { CustomPreloadingService } from './common/services/custom-preloading.ser
     CartService,
     ProductResolveService,
     OrderGuardService,
-    CustomPreloadingService
+    CustomPreloadingService,
+    SearchService
   ],
   entryComponents: [FullCardComponent, FullCartComponent],
   bootstrap: [AppComponent]
