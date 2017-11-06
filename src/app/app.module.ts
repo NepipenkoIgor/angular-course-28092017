@@ -23,11 +23,13 @@ import { OrderGuardService } from './order/order-guard.service';
 import { CustomPreloadingService } from './common/services/custom-preloading.service';
 
 import { SearchService } from './search/search.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations,
   imports: [
     BrowserModule,
+    NoopAnimationsModule,
     MaterialModule,
     HttpClientModule,
     RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadingService })

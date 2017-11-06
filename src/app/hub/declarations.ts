@@ -12,6 +12,7 @@ import { FullCartComponent } from '../cart/full-cart/full-cart.component';
 import { ProductsComponent } from '../products/products.component';
 import { ProductComponent } from '../products/product/product.component';
 
+
 // tslint:disable-next-line
 export const declarations: any[] = [
   AppComponent,
